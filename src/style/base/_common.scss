@@ -1,0 +1,58 @@
+*,
+*:before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $dark-theme-bckg;
+  color: $dark-theme-text-color;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  marker: none;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.2s ease-in;
+
+  &:hover,
+  &:active {
+    color: #c9f383;
+    // background-image: $gradient-color;
+    transition: color 0.2s ease-in;
+  }
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}

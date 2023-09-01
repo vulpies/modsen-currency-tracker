@@ -1,7 +1,9 @@
+import HomePage from '../pages/HomePage'
+
 const App = () => {
   return (
     <>
-      <h1>Test</h1>
+      <HomePage />
     </>
   )
 }

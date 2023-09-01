@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -26,6 +28,7 @@ module.exports = {
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-unused-vars': ['error'],
 		'@typescript-eslint/no-var-requires': 'off',
+		"@typescript-eslint/no-explicit-any": ["off"],
 		'react/prop-types': 'off',
 		'react/jsx-uses-react': 'off',
 		'react/react-in-jsx-scope': 'off',
