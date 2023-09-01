@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const webpack = require('webpack')
 
 module.exports = {
