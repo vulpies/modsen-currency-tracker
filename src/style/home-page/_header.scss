@@ -59,7 +59,7 @@
       transition: all 0.3s cubic-bezier(0.2, 0.85, 0.32, 1.2);
 
       &:hover {
-        box-shadow: 0px 0px 14px #0cce1f;
+        box-shadow: 0px 0px 10px #76e0db;
         transition: box-shadow 0.3s ease-out;
       }
 
@@ -80,14 +80,13 @@
 
       &:checked::after {
         transform: translateX(calc(100% + 0px));
-        background-color: #6ee44f;
-        border: 3px solid #3fb71a;
+        background-color: #a1dff3;
+        border: 3px solid #389dbe;
       }
 
       &:checked {
-        // background-color: #a0ea40f0;
         background-color: rgb(253 254 252 / 91%);
-        border: 3px solid #3fb71a;
+        border: 3px solid #389dbe;
       }
     }
   }
@@ -96,13 +95,7 @@
 .info {
   &-wrapper {
     width: 100%;
-    background: linear-gradient(
-      253deg,
-      #121212 11.77%,
-      rgba(36, 121, 64, 0) 91.12%
-    );
     position: relative;
-    // background-image: url('../../assets/image/bckg-gradient.png');
   }
 
   &-inner {
@@ -154,5 +147,17 @@
       line-height: 41.143px;
       margin-left: 18px;
     }
+  }
+}
+
+[data-theme='dark'] {
+  .info-wrapper {
+    background: $dark-gradient-color;
+  }
+}
+
+[data-theme='light'] {
+  .info-wrapper {
+    background: $light-gradient-color;
   }
 }

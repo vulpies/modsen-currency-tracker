@@ -1,12 +1,33 @@
-$dark-theme-bckg: #030304;
-$dark-theme-text-color: #d9d9d9;
-$dark-theme-nav-color: #ffffff;
-
+//COMMON PARTS
 $gradient-color: linear-gradient(
   92deg,
   #00ce2c 0%,
   #aedf23 49.26%,
   #a3dc00 100%
 );
-
 $single-item-bckg: #202025;
+
+//DARK THEME
+$dark-theme-bckg: #030304;
+$dark-theme-text-color: #d9d9d9;
+$dark-theme-nav-color: #ffffff;
+$card-item-hover-dark: 0px 0px 17px #a6d459;
+$dark-gradient-color: linear-gradient(
+  348deg,
+  #092108 11.77%,
+  rgba(36, 121, 64, 0) 90%
+);
+$link-hover-dark: #c9f383;
+$grey-footer-color-text-dark: #898989;
+
+//LIGHT THEME
+// $light-theme-bckg: #9a83bd;
+$light-theme-bckg: #9d76d8c4;
+$light-gradient-color: linear-gradient(
+  321deg,
+  #2f8ca6 11.77%,
+  rgba(207, 227, 22, 0) 97%
+);
+$card-item-hover-light: 0px 0px 13px #1652df;
+$link-hover-light: #69f2ff;
+$grey-footer-color-text-light: #292525;

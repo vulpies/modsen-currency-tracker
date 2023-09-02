@@ -1,11 +1,12 @@
-import React from 'react'
 import Logo from '../assets/image/logo.png'
 import Circle from '../assets/image/circle.png'
+import { ThemeContext } from './App'
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
-  {
-    /* ширина контейнера 1240зч */
-  }
+  const { theme, toggleTheme } = useContext(ThemeContext)
+
   return (
     <>
       <header className="header">
@@ -18,16 +19,18 @@ const Header = () => {
         <nav className="header-nav">
           <ul>
             <li>
-              <a href="/">Home</a>
+              <NavLink to="/" end>
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="/">Timeline</a>
+              <NavLink to="/charts">Timeline</NavLink>
             </li>
             <li>
-              <a href="/">Bank card</a>
+              <NavLink to="/locations">Bank card</NavLink>
             </li>
             <li>
-              <a href="/">Contato</a>
+              <NavLink to="/contacts">Contato</NavLink>
             </li>
           </ul>
         </nav>
@@ -37,6 +40,8 @@ const Header = () => {
             type="checkbox"
             id="toggle-button"
             className="header-toggle__button"
+            onChange={toggleTheme}
+            checked={theme === 'light'}
           />
           <label htmlFor="toggle-button" className="text">
             {' '}
