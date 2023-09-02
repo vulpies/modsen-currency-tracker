@@ -9,10 +9,9 @@
   &-copyright {
     text-align: center;
     margin-top: 55px;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
 
     p {
-      color: #898989;
       font-size: 24px;
       font-weight: 400;
       line-height: 150%;
@@ -60,7 +59,6 @@
     gap: 0 135px;
 
     ul li {
-      color: #898989;
       font-size: 24px;
       font-weight: 400;
       line-height: normal;
@@ -78,5 +76,19 @@
         margin-bottom: 0;
       }
     }
+  }
+}
+
+[data-theme='dark'] {
+  .footer-links li,
+  .footer-copyright p {
+    color: $grey-footer-color-text-dark;
+  }
+}
+
+[data-theme='light'] {
+  .footer-links li,
+  .footer-copyright p {
+    color: $grey-footer-color-text-light;
   }
 }

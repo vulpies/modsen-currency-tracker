@@ -29,6 +29,7 @@
       border: 1px solid #474747;
       background-color: $single-item-bckg;
       margin-bottom: 55px;
+      transition: all 0.4s;
     }
 
     &__text {
@@ -51,5 +52,26 @@
 
   &-quotes {
     margin-top: 85px;
+
+    & .main-wrapper__item {
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.015);
+        transition: all 0.4s;
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .main-wrapper__item:hover {
+    box-shadow: $card-item-hover-dark;
+  }
+}
+
+[data-theme='light'] {
+  .main-wrapper__item:hover {
+    box-shadow: $card-item-hover-light;
   }
 }

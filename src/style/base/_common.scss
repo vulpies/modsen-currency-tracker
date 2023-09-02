@@ -42,17 +42,33 @@ a {
   text-decoration: none;
   cursor: pointer;
   color: inherit;
-  transition: color 0.2s ease-in;
+  transition: color 0.3s linear;
 
   &:hover,
   &:active {
-    color: #c9f383;
-    // background-image: $gradient-color;
-    transition: color 0.2s ease-in;
+    transition: color 0.3s linear;
   }
 }
 
 button {
   outline: none;
   cursor: pointer;
+}
+
+[data-theme='dark'] {
+  a:hover,
+  a:active,
+  a.active {
+    color: $link-hover-dark;
+  }
+}
+
+[data-theme='light'] {
+  background-color: $light-theme-bckg;
+
+  a:hover,
+  a.active,
+  a.active {
+    color: $link-hover-light;
+  }
 }
