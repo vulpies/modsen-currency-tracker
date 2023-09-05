@@ -1,11 +1,38 @@
 import Logo from '../assets/image/logo.png'
 import Circle from '../assets/image/circle.png'
 import { ThemeContext } from './App'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+// import currencyapi from '@everapi/currencyapi-js'
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
+
+  const [getDate, setGetDate] = useState('2023-09-04T23:59:59Z')
+  const [lastUPD, setLastUPD] = useState('')
+
+  /* ДЛЯ РЕАЛЬНЫХ ДАННЫХ */
+  // useEffect(() => {
+  //   const client = new currencyapi(
+  //     'cur_live_2ipYARKKC1oZ9I1QZrbbYf8KIxQcXPe2v05zwMOB'
+  //   )
+
+  //   client.latest().then((res: any) => {
+  //     setGetDate(res.meta.last_updated_at)
+  //   })
+  // }, [])
+
+  useEffect(() => {
+    const date = new Date(Date.parse(getDate))
+    let getHours = date.getHours()
+    const getMinutes = date.getMinutes()
+
+    if (getHours < 10) {
+      getHours = `0${getHours}`
+    }
+
+    setLastUPD(`${getHours}:${getMinutes} ${getHours < 12 ? 'am' : 'pm'}`)
+  }, [getDate])
 
   return (
     <>
@@ -64,7 +91,7 @@ const Header = () => {
 
       <div className="info-updated">
         <img src={Circle} alt="circle" />
-        <p>Last updated at 11:59pm</p>
+        <p>Last updated at {lastUPD}</p>
       </div>
     </>
   )
