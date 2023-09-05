@@ -14,7 +14,6 @@ const MainCourseInfo = () => {
   const [list, setList]: any = useState(data)
   // const [cur, setCur] = useState(data)
   const [allCurr, setAllCurr] = useState()
-  // const [arr, setArr] = useState([])
 
   function openModal(item: number) {
     setShow(true)
@@ -27,6 +26,7 @@ const MainCourseInfo = () => {
     })
   }, [])
 
+  /* ДЛЯ РЕАЛЬНЫХ ДАННЫХ */
   // useEffect(() => {
   //   const client = new currencyapi(
   //     'cur_live_2ipYARKKC1oZ9I1QZrbbYf8KIxQcXPe2v05zwMOB'
@@ -49,26 +49,27 @@ const MainCourseInfo = () => {
   //       ],
   //     })
   //     .then((res: any) => setCur(res.data))
-  //   // const res = client.currencies()
-  //   // console.log(res, 'res')
   // }, [])
-
-  // console.log(cur, 'cur')
-  // console.log(data, 'data')
-
-  // list.forEach((item: any) => {
-  //   for (const cur in allCurr) {
-  //     if (item.code === cur) {
-  //       setList({ ...list }, (item.cur = allCurr[cur].toFixed(2)))
-  //     }
-  //   }
-  // })
 
   const arr = []
 
-  // useEffect(() => {
-  //   console.log(arr)
-  // }, [arr])
+  /* ДЛЯ РЕАЛЬНЫХ ДАННЫХ */
+  // for (const key in cur) {
+  //   for (const curs in allCurr) {
+  //     if (cur[key].code === curs) {
+  //       cur[key].cur = allCurr[curs].toFixed(2)
+
+  //       const clone = Object.assign(
+  //         {},
+  //         { code: cur[key].code },
+  //         { cur: cur[key].cur },
+  //         { name: cur[key].name },
+  //         { symbol: cur[key].symbol }
+  //       )
+  //       arr.push(clone)
+  //     }
+  //   }
+  // }
 
   for (const key in list) {
     for (const cur in allCurr) {
@@ -82,43 +83,10 @@ const MainCourseInfo = () => {
           { name: list[key].name },
           { symbol: list[key].symbol }
         )
-
-        // console.log(clone, 'clone')
         arr.push(clone)
       }
     }
   }
-
-  console.log(arr, 'arr')
-
-  const sings: any = arr.forEach((item: any, i: number) => {
-    return (
-      <>
-        <div
-          className="main-wrapper__item"
-          key={i}
-          onClick={() => openModal(i)}
-        >
-          <div className="main-wrapper__symbol">
-            <span>{item.symbol}</span>
-          </div>
-          <div className="main-wrapper__text">
-            <h3>{item.name}</h3>
-            <p>
-              1USD = {item.cur}
-              {item.symbol}
-            </p>
-          </div>
-        </div>
-
-        {itemId === i && show ? (
-          <Modal setShow={setShow} code={item.code} />
-        ) : (
-          ''
-        )}
-      </>
-    )
-  })
 
   return (
     <main className="main">
@@ -146,7 +114,35 @@ const MainCourseInfo = () => {
 
       <article className="main-quotes">
         <h2>Quotes</h2>
-        <div className="main-wrapper">{sings}</div>
+        <div className="main-wrapper">
+          {arr.map((item: any, i: number) => {
+            return (
+              <>
+                <div
+                  className="main-wrapper__item"
+                  key={i}
+                  onClick={() => openModal(i)}
+                >
+                  <div className="main-wrapper__symbol">
+                    <span>{item.symbol}</span>
+                  </div>
+                  <div className="main-wrapper__text">
+                    <h3>{item.name}</h3>
+                    <p>
+                      1 USD = {item.cur} {item.symbol}
+                    </p>
+                  </div>
+                </div>
+
+                {itemId === i && show ? (
+                  <Modal setShow={setShow} code={item.code} />
+                ) : (
+                  ''
+                )}
+              </>
+            )
+          })}
+        </div>
       </article>
     </main>
   )

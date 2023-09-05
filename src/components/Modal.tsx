@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-// /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-// /* eslint-disable jsx-a11y/no-static-element-interactions */
-// /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import axios from 'axios'
 import { useState } from 'react'
@@ -11,7 +8,6 @@ import { useState } from 'react'
 interface ModalUI {
   code: string
   setShow: any
-  // list: string[]
 }
 
 const Modal = ({ setShow, code }: ModalUI) => {
@@ -32,12 +28,9 @@ const Modal = ({ setShow, code }: ModalUI) => {
     axios
       .get(`https://api.exchangerate.host/latest?base=${baseCur}`)
       .then((res) => {
-        console.log(res.data.rates)
         const rate = res.data.rates[targetCur]
         setTargetCurAmount(Number((baseCurAmount * rate).toFixed(2)))
       })
-
-    console.log(targetCurAmount)
   }
 
   return (
@@ -65,7 +58,7 @@ const Modal = ({ setShow, code }: ModalUI) => {
                   name="baseCurAmount"
                   defaultValue={baseCurAmount}
                   type="number"
-                  onChange={(e) => setBaseCurAmount(e.target.value.trim())}
+                  onChange={(e: any) => setBaseCurAmount(e.target.value)}
                 />
               </div>
 
@@ -87,7 +80,7 @@ const Modal = ({ setShow, code }: ModalUI) => {
                   name="targetCurAmount"
                   value={targetCurAmount}
                   type="number"
-                  onChange={(e) => setTargetCurAmount(e.target.value.trim())}
+                  onChange={(e: any) => setTargetCurAmount(e.target.value)}
                 />
               </div>
               <div className="modal__currency-item">
