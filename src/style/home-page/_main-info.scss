@@ -48,6 +48,20 @@
         line-height: 41.143px;
       }
     }
+
+    &__symbol {
+      width: 80px;
+      height: 80px;
+      background-color: darkcyan;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        display: block;
+        font-size: 30px;
+      }
+    }
   }
 
   &-quotes {
@@ -65,13 +79,13 @@
 }
 
 [data-theme='dark'] {
-  .main-wrapper__item:hover {
+  .main-quotes .main-wrapper .main-wrapper__item:hover {
     box-shadow: $card-item-hover-dark;
   }
 }
 
 [data-theme='light'] {
-  .main-wrapper__item:hover {
+  .main-quotes .main-wrapper .main-wrapper__item:hover {
     box-shadow: $card-item-hover-light;
   }
 }
