@@ -46,18 +46,16 @@ const Header = () => {
         <nav className="header-nav">
           <ul>
             <li>
-              <NavLink to="/" end>
-                Home
-              </NavLink>
+              <NavLink to="/home"> Home</NavLink>
             </li>
             <li>
               <NavLink to="/charts">Timeline</NavLink>
             </li>
             <li>
-              <NavLink to="/locations">Bank card</NavLink>
+              <NavLink to="/">Bank card</NavLink>
             </li>
             <li>
-              <NavLink to="/contacts">Contato</NavLink>
+              <NavLink to="/contacts">Contacts</NavLink>
             </li>
           </ul>
         </nav>

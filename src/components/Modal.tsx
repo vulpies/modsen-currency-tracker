@@ -25,12 +25,10 @@ const Modal = ({ setShow, code }: ModalUI) => {
   function getRates(e: any) {
     e.preventDefault()
 
-    axios
-      .get(`https://api.exchangerate.host/latest?base=${baseCur}`)
-      .then((res) => {
-        const rate = res.data.rates[targetCur]
-        setTargetCurAmount(Number((baseCurAmount * rate).toFixed(2)))
-      })
+    axios.get(`https://api.exchangerate.host/latest?base=${baseCur}`).then((res) => {
+      const rate = res.data.rates[targetCur]
+      setTargetCurAmount(Number((baseCurAmount * rate).toFixed(2)))
+    })
   }
 
   return (

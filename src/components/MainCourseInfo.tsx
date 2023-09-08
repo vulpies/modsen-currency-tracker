@@ -81,7 +81,7 @@ const MainCourseInfo = () => {
           { code: list[key].code },
           { cur: list[key].cur },
           { name: list[key].name },
-          { symbol: list[key].symbol }
+          { symbol: list[key].symbol },
         )
         arr.push(clone)
       }
@@ -118,11 +118,7 @@ const MainCourseInfo = () => {
           {arr.map((item: any, i: number) => {
             return (
               <>
-                <div
-                  className="main-wrapper__item"
-                  key={i}
-                  onClick={() => openModal(i)}
-                >
+                <div className="main-wrapper__item" key={i} onClick={() => openModal(i)}>
                   <div className="main-wrapper__symbol">
                     <span>{item.symbol}</span>
                   </div>
@@ -134,11 +130,7 @@ const MainCourseInfo = () => {
                   </div>
                 </div>
 
-                {itemId === i && show ? (
-                  <Modal setShow={setShow} code={item.code} />
-                ) : (
-                  ''
-                )}
+                {itemId === i && show ? <Modal setShow={setShow} code={item.code} /> : ''}
               </>
             )
           })}
