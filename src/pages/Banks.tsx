@@ -1,9 +1,10 @@
-import { Header, Footer } from '../components/index'
+import { Header, Footer, BanksLocation } from '../components/index'
 
 const Banks = () => {
   return (
     <>
       <Header />
+      <BanksLocation />
       <Footer />
     </>
   )

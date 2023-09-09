@@ -19,6 +19,10 @@ module.exports = {
 				],
 			},
 			{
+				test: /\.css$/,
+				use: ['css-loader']
+			},
+			{
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
@@ -31,6 +35,9 @@ module.exports = {
 				type: 'asset/inline',
 			},
 		],
+	},
+	devServer: {
+		historyApiFallback: true,
 	},
 	output: {
 		path: path.resolve(__dirname, '..', './build'),

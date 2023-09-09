@@ -1,0 +1,70 @@
+.maps {
+	margin-top: 110px;
+	margin-bottom: 200px;
+
+	&-select {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 80px;
+
+		& h2 {
+			color: #FFF;
+			font-size: 38px;
+			font-weight: 400;
+			line-height: normal;
+			margin-bottom: 25px;
+		}
+
+		& select {
+			color: #fff;
+			width: 450px;
+			background-color: #1B2028;
+			border-radius: 7px;
+			padding: 20px;
+			font-size: 20px;
+			transition: all 0.3s ease-in;
+			border:3px solid #b4aeae29;
+					cursor: pointer;
+
+			&:hover {
+				border:3px solid #edd651bf;
+				transition: border 0.3s ease-in;
+			}
+
+			&:focus {
+				outline:3px solid #a7ff00bf;
+				border-color: transparent;
+			}
+
+			& option {
+				margin: 20px 5px;
+			}
+		}
+	}
+
+	&-map {
+		width: 100%;
+		height: 500px;
+		background-color: #eeeeee;
+		position: relative;
+	}
+
+	&-marker {
+	position: absolute;
+    font-size: 29px;
+    width: max-content;
+    top: -45px;
+    color: #000;
+    left: -4em;
+    background-color: #e7e4e3;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #b4b1b1;
+	display: none;
+	}
+}
+
+.mapboxgl-marker:hover .maps-marker{
+	display: block;
+}

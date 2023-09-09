@@ -3,23 +3,26 @@ import Circle from '../assets/image/circle.png'
 import { ThemeContext } from './App'
 import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import currencyapi from '@everapi/currencyapi-js'
+import currencyapi from '@everapi/currencyapi-js'
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
 
-  const [getDate, setGetDate] = useState('2023-09-04T23:59:59Z')
+  const [getDate, setGetDate] = useState('2023-09-07T23:59:59Z')
   const [lastUPD, setLastUPD] = useState('')
 
   /* ДЛЯ РЕАЛЬНЫХ ДАННЫХ */
   // useEffect(() => {
   //   const client = new currencyapi(
-  //     'cur_live_2ipYARKKC1oZ9I1QZrbbYf8KIxQcXPe2v05zwMOB'
+  //     'cur_live_2ipYARKKC1oZ9I1QZrbbYf8KIxQcXPe2v05zwMOB',
   //   )
 
   //   client.latest().then((res: any) => {
+  //     // console.log(res.meta.last_updated_at, 8888999)
   //     setGetDate(res.meta.last_updated_at)
   //   })
+
+  //   console.log(getDate, 777)
   // }, [])
 
   useEffect(() => {
@@ -46,18 +49,16 @@ const Header = () => {
         <nav className="header-nav">
           <ul>
             <li>
-              <NavLink to="/" end>
-                Home
-              </NavLink>
+              <NavLink to="/"> Home</NavLink>
             </li>
             <li>
               <NavLink to="/charts">Timeline</NavLink>
             </li>
             <li>
-              <NavLink to="/locations">Bank card</NavLink>
+              <NavLink to="/banks">Bank card</NavLink>
             </li>
             <li>
-              <NavLink to="/contacts">Contato</NavLink>
+              <NavLink to="/contacts">Contacts</NavLink>
             </li>
           </ul>
         </nav>
