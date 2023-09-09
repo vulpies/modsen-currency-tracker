@@ -1,0 +1,37 @@
+.contacts {
+	width: 1220px;
+	margin: 150px auto 200px;
+	display: flex;
+	align-items:center;
+	gap: 0 15px;
+
+	&-address {
+		width: 50%;
+
+		h2 {
+			font-size: 45px;
+			color: #aedd2a;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 30px;
+			margin-bottom: -9px;
+		}
+
+		&__email {
+			line-height: 31px;
+			margin: 30px 0 20px !important;
+
+			span {
+				margin-right: 10px;
+				font-weight: bold;
+			}
+		}
+
+		&__email span, &__phone span {
+				margin-right: 10px;
+				font-weight: bold;
+		}
+	}
+}

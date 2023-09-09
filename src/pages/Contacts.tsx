@@ -1,9 +1,10 @@
-import { Header, Footer } from '../components/index'
+import { Header, Footer, ContactsInfo } from '../components/index'
 
 const Contacts = () => {
   return (
     <>
       <Header />
+      <ContactsInfo />
       <Footer />
     </>
   )
