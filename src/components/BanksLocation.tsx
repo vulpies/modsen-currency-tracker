@@ -1,7 +1,12 @@
-import { Component } from 'react'
+import {
+  Component,
+  JSXElementConstructor,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+} from 'react'
 import axios from 'axios'
-import { MapContainer, TileLayer } from 'react-leaflet'
-// import 'leaflet/dist/leaflet.css'
+import { Map, NavigationControl, FullscreenControl, Marker } from 'react-map-gl'
 
 class BanksLocation extends Component {
   constructor(props: any) {
@@ -9,8 +14,13 @@ class BanksLocation extends Component {
     this.state = {
       data: [],
       currency: 'none',
+      list: [],
+      view: {
+        longitude: 27.555696,
+        latitude: 53.902735,
+        zoom: 11,
+      },
     }
-    this.list = this.state.data
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -22,7 +32,8 @@ class BanksLocation extends Component {
         categories: '11045',
         open_now: 'true',
         near: 'Minsk',
-        sort: 'DISTANCE',
+        sort: 'distance',
+        limit: '30',
       },
       headers: {
         accept: 'application/json',
@@ -31,9 +42,9 @@ class BanksLocation extends Component {
     }
     axios
       .request(options)
-      .then((response) => {
-        this.setState({ data: response.data.results })
-        console.log(this.state.data, 8888)
+      .then((res) => {
+        this.setState({ list: res.data.results, data: res.data.results })
+        console.log(this.state.list, 8888)
       })
       .catch(function (error) {
         console.error(error)
@@ -41,20 +52,15 @@ class BanksLocation extends Component {
   }
 
   handleChange(event: any) {
-    let list = this.state.data
-
     if (event.target.value === 'USD') {
-      list = this.state.data.slice(0, 5)
+      this.setState({ data: this.state.list.slice(0, 7) })
     } else if (event.target.value === 'EUR') {
-      list = this.state.data.slice(5, 8)
+      this.setState({ data: this.state.list.slice(7, 18) })
     } else if (event.target.value === 'RUB') {
-      list = this.state.data.slice(8)
+      this.setState({ data: this.state.list.slice(18) })
+    } else {
+      this.setState({ data: this.state.list })
     }
-
-    console.log(list, 'list')
-    console.log(event.target.value, 9999)
-    this.setState({ currency: event.target.value })
-    console.log(this.state, 777)
   }
 
   render() {
@@ -75,18 +81,41 @@ class BanksLocation extends Component {
           </select>
         </div>
 
-        <div className="maps-map">
-          <MapContainer center={[53.902735, 27.555696]} zoom={12}>
-            <TileLayer
-              attribution={
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              }
-              url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-            ></TileLayer>
-          </MapContainer>
-        </div>
-
-        {/* <div id="map" className="explorer-map"></div> */}
+        <Map
+          {...this.state.view}
+          onMove={(evt) => this.setState({ view: evt.view })}
+          mapStyle="mapbox://styles/vulpies/clmaaw98q017k01pe9kai32t1"
+          mapboxAccessToken="pk.eyJ1IjoidnVscGllcyIsImEiOiJjbG05M3d3cHMwZnBpM3Z0Y2I5bzlxNWIwIn0.n2dK45dCjDPqPqLjXji2zA"
+          style={{ width: '100%', height: 600 }}
+        >
+          <FullscreenControl />
+          <NavigationControl />
+          {this.state.data?.map(
+            (item: {
+              geocodes: { main: { longitude: number; latitude: number } }
+              name:
+                | string
+                | number
+                | boolean
+                | ReactElement<any, string | JSXElementConstructor<any>>
+                | Iterable<ReactNode>
+                | ReactPortal
+                | null
+                | undefined
+            }) => (
+              <>
+                <Marker
+                  longitude={item.geocodes.main.longitude}
+                  latitude={item.geocodes.main.latitude}
+                  anchor="bottom"
+                >
+                  <img src="https://i2.imageban.ru/out/2023/09/08/39ffd00ae015147dfd8633f189dd05d1.png" />
+                  <p className="maps-marker">{item.name}</p>
+                </Marker>
+              </>
+            ),
+          )}
+        </Map>
       </main>
     )
   }
